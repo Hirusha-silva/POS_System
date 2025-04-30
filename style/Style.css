@@ -8,7 +8,27 @@
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
-.card {
-    padding: 20px;
-    margin-top: 20px;
+#card-section {
+    margin-top: 5px;
 }
+.cards {
+    height: 100%;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cards img {
+    max-height: 200px;
+    object-fit: contain;
+}
+
+.cards :hover{
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 139, 0.4);
+    cursor: pointer;
+}
+
+
+
