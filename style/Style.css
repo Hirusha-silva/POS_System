@@ -1,3 +1,10 @@
 .navbar-nav .nav-item {
     margin-right: 20px;
 }
+.banner {
+    background: linear-gradient(135deg, darkblue,#4b6cb7, #182848,darkblue); /* nice blue gradient */
+    color: white;                     /* white text for contrast */
+    padding: 100px 20px;              /* spacing around the content */
+    border-radius: 12px;              /* optional rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* optional shadow */
+}
