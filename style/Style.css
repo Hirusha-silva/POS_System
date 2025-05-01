@@ -37,13 +37,36 @@
     gap: 1rem;
 }
 .mb-3 input {
-    width: 300px;
+    width: 400px;
 }
 .mb-3 textarea {
-    width: 300px;
+    width: 810px;
     height: 100px;
+    align-items: center;
 }
 
-
-
+.name {
+    display: flex;
+}
+.name .d-flex {
+    gap: 2rem;
+    align-items: center;
+}
+.ec {
+    display: flex;
+}
+.ec .d-flex {
+    gap: 1rem;
+    align-items: center;
+}
+#button button{
+    width: 150px;
+    margin-right: 10px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 20px;
+}
+.table {
+    margin-top: 20px;
+}
 
