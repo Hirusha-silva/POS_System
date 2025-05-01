@@ -29,6 +29,13 @@
     box-shadow: 0 10px 20px rgba(0, 0, 139, 0.4);
     cursor: pointer;
 }
+#home {
+    display: none;
+}
+
+#customer .d-flex {
+    gap: 1rem;
+}
 
 
 
