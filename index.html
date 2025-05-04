@@ -220,6 +220,7 @@
     $("#customer_nav").on('click',function (){
         $("#customer").css("display","block");
         $("#home").css("display","none");
+        $("#item").css("display","none");
     });
 
     $("#item_nav").on('click',function (){
@@ -228,7 +229,11 @@
         $("#customer").css("display","none");
     });
 
-
+    $("#home_nav").on('click',function (){
+        $("#home").css("display","block");
+        $("#customer").css("display","none");
+        $("#item").css("display","none");
+    });
 </script>
 </body>
 </html>
