@@ -21,16 +21,16 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active"  id="home_nav" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Item</a>
+                    <a class="nav-link" id="item_nav" href="#">Item</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">customer</a>
+                    <a class="nav-link"  id="customer_nav" href="#">customer</a>
                 </li>
 
 <!--                <li class="nav-item dropdown">-->
@@ -220,9 +220,15 @@
     $("#customer_nav").on('click',function (){
         $("#customer").css("display","block");
         $("#home").css("display","none");
-    })
+    });
 
-    $()
+    $("#item_nav").on('click',function (){
+        $("#item").css("display","block");
+        $("#home").css("display","none");
+        $("#customer").css("display","none");
+    });
+
+
 </script>
 </body>
 </html>
