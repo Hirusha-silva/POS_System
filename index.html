@@ -34,7 +34,7 @@
                         Others
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Customers</a></li>
+                        <li><a  id="customer_nav" class="dropdown-item" href="#">Customers</a></li>
                         <li><a class="dropdown-item" href="#">Employees</a></li>
                         <li><a class="dropdown-item" href="#">Settings</a></li>
                         <li><a class="dropdown-item" href="#">About</a></li>
@@ -212,6 +212,13 @@
 <script>
     $("#item").css("display","none");
     $("#customer").css("display","none");
+
+    $("#customer_nav").on('click',function (){
+        $("#customer").css("display","block");
+        $("#home").css("display","none");
+    })
+
+    $()
 </script>
 </body>
 </html>
