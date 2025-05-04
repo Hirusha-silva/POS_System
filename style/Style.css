@@ -69,4 +69,23 @@
 .table {
     margin-top: 20px;
 }
+#customer {
+    display: none;
+}
+.itemname.d-flex {
+    gap: 2rem;
+}
+.qp.d-flex {
+    gap: 2rem;
+}
+#item_btn button {
+    width: 150px;
+    height: 50px;
+    margin-right: 10px;
+    font-size: 20px;
+    border-radius: 20px;
+}
+
+
+
 
