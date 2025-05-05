@@ -214,10 +214,11 @@
             <i class="fa-solid fa-circle-user fa-2x"></i>
             <h1 class="mb-0">Order</h1>
         </div>
+        <div id="cardflex" class="cardf d-flex">
         <form id="customer_card">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Search Customer</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="search_customer" class="form-label">Search Customer</label>
+                <input type="email" class="form-control" id="search_customer" aria-describedby="emailHelp">
             </div>
             <div id="customer_search">
                 <button type="button" class="btn btn-primary btn-sm">Search</button>
@@ -249,8 +250,51 @@
                     </div>
                 </div>
             </div>
+        </form>
+        <form id="item_card">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Search Item</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div id="item_search">
+                <button type="button" class="btn btn-primary btn-sm">Search</button>
+                <button type="button" class="btn btn-secondary btn-sm">Reset</button>
+            </div>
+            <div id="item_detail">
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label"> ID</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">QTY on hand</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">Price</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">QTY</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
 
         </form>
+        </div>
 
     </div>
 

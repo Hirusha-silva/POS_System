@@ -91,7 +91,13 @@
     padding-left: 20px;
     border-radius: 20px;
 }
-
+#item_card{
+    border: solid darkblue 2px;
+    width: 550px;
+    padding-left: 20px;
+    border-radius: 20px;
+    margin-left: 100px;
+}
 
 
 
