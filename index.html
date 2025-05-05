@@ -24,7 +24,7 @@
                     <a class="nav-link active"  id="home_nav" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Orders</a>
+                    <a class="nav-link" id="order_nav" href="#">Orders</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="item_nav" href="#">Item</a>
@@ -303,26 +303,39 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+    $("#home").css("display","block");
     $("#item").css("display","none");
     $("#customer").css("display","none");
+    $("#order").css("display","none");
 
     $("#customer_nav").on('click',function (){
         $("#customer").css("display","block");
         $("#home").css("display","none");
         $("#item").css("display","none");
+        $("#order").css("display","none");
     });
 
     $("#item_nav").on('click',function (){
         $("#item").css("display","block");
         $("#home").css("display","none");
         $("#customer").css("display","none");
+        $("#order").css("display","none");
     });
 
     $("#home_nav").on('click',function (){
         $("#home").css("display","block");
         $("#customer").css("display","none");
         $("#item").css("display","none");
+        $("#order").css("display","none");
     });
+
+    $("#order_nav").on('click',function (){
+        $("#order").css("display","block");
+        $("#item").css("display","none");
+        $("#customer").css("display","none");
+        $("#home").css("display","none");
+    });
+
 </script>
 </body>
 </html>
