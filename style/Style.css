@@ -85,7 +85,12 @@
     font-size: 20px;
     border-radius: 20px;
 }
-
+#customer_card {
+    border: solid darkblue 2px;
+    width: 550px;
+    padding-left: 20px;
+    border-radius: 20px;
+}
 
 
 
