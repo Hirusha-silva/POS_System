@@ -39,3 +39,25 @@ function loadCustomer() {
       $('#customer_tbody').append(data);
    });
 }
+// save
+$('#customer_save').on('click',function (){
+   let customerId = $('#customerId').val();
+   let name = $('#name').val();
+   let address = $('#address').val();
+   let email = $('#email').val();
+   let number = $('#number').val();
+
+   if (customerId === '' || name === '' || address === '' || email === '' || number === ''){
+      Swal.fire({
+         icon: "error",
+         title: "Oops...",
+         text: "Invalid Inputs",
+      });
+   }else {
+      let customerId =generateCustomerId();
+      let customer_data = new CustomerModel(customerId,name,address,email,number);
+      customer_db.push(customer_data);
+
+      loadCustomer();
+   }
+});
