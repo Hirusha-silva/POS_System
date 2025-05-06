@@ -104,3 +104,46 @@ $("#customer_tbody").on('click','tr',function (){
    $('#customer_update').show();
    $('#customer_delete').show();
 });
+
+// update
+$('#customer_update').on('click',function (){
+   let id = $('#customerId').val();
+   let name = $('#name').val();
+   let address = $('#address').val();
+   let email = $('#email').val();
+   let number = $('#number').val();
+
+   if (id === '' || name === '' || address === '' || email === '' || number === ''){
+      Swal.fire({
+         icon: "error",
+         title: "Oops...",
+         text: "select data to update !",
+      });
+      return;
+   }
+   const index = customer_db.findIndex(c => c.customerId === id);
+
+   if (index !== -1){
+      customer_db[index].name = name;
+      customer_db[index].address = address;
+      customer_db[index].email = email;
+      customer_db[index].number = number;
+
+      console.log(customer_db[index]);
+
+      loadCustomer();
+      clearForm();
+
+      Swal.fire({
+         title: "Updated Successfully!",
+         icon: "success",
+         draggable: true
+      });
+   }else {
+      Swal.fire({
+         icon: "error",
+         title: "Not Found",
+         text: "Customer with ID " + id + " does not exist.",
+      });
+   }
+});
