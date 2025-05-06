@@ -83,3 +83,24 @@ function clearForm(){
    $('#customer_delete').hide();
 }
 
+// table on click
+$("#customer_tbody").on('click','tr',function (){
+   let idx = $(this).index();
+   let obj = customer_db[idx];
+
+   let id = obj.customerId;
+   let name = obj.name;
+   let address = obj.address;
+   let email = obj.email;
+   let number = obj.number;
+
+   $('#customerId').val(id);
+   $('#name').val(name);
+   $('#address').val(address);
+   $('#email').val(email);
+   $('#number').val(number);
+
+   $('#customer_save').hide();
+   $('#customer_update').show();
+   $('#customer_delete').show();
+});
