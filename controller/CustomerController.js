@@ -54,10 +54,32 @@ $('#customer_save').on('click',function (){
          text: "Invalid Inputs",
       });
    }else {
+
+      Swal.fire({
+         title: " Customer Saved !",
+         icon: "success",
+         draggable: true
+      });
+
       let customerId =generateCustomerId();
       let customer_data = new CustomerModel(customerId,name,address,email,number);
       customer_db.push(customer_data);
 
       loadCustomer();
+      clearForm();
    }
 });
+
+// clear form
+function clearForm(){
+   $('#customerId').val(generateCustomerId());
+   $('#name').val('');
+   $('#address').val('');
+   $('#email').val('');
+   $('#number').val('');
+
+   $('#customer_save').show();
+   $('#customer_update').hide();
+   $('#customer_delete').hide();
+}
+
