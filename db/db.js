@@ -1,1 +1,1 @@
-let customer_db = [];
+export let customer_db = [];
