@@ -61,5 +61,19 @@ $('#item_save').on('click',function (){
         item_db.push(item_data);
 
         loadItem();
+        clearForm()
     }
 });
+
+// clear form
+function clearForm() {
+    $('#item_id').val(generateItemId());
+    $('#item_name').val('');
+    $('#qty').val('');
+    $('#price').val('');
+
+    $('#item_save').show();
+    $('#item_update').hide();
+    $('#item_delete').hide();
+
+}
