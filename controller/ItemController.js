@@ -4,6 +4,7 @@ import ItemModel from "../model/ItemModel.js";
 // load item Id
 $(document).ready(function (){
    $('#item_id').val(generateItemId());
+   loadItem();
 });
 
 // generate item Id
@@ -15,4 +16,24 @@ function generateItemId(){
     let numberPart = parseInt(lastId.substring(1));
     let newId = numberPart + 1;
     return "I" + newId.toString().padStart(3,'0');
+}
+
+// load table data
+function loadItem(){
+    $('#item_tbody').empty();
+    item_db.map((item,index) => {
+       let item_id = item.item_Id;
+       let item_name = item.item_name;
+       let qty = item.qty;
+       let price = item.price;
+
+       let data = `<tr>
+                            <td>${item_id}</td>
+                            <td>${item_name}</td>
+                            <td>${qty}</td>
+                            <td>${price}</td>
+                        </tr>`
+
+        $('#item_tbody').append(data);
+    });
 }
