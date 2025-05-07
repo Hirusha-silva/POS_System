@@ -2,9 +2,9 @@ import {item_db} from "../db/db.js";
 import ItemModel from "../model/ItemModel.js";
 
 // load item Id
-// $(document).ready(function (){
-//    $('item_id').val()
-// });
+$(document).ready(function (){
+   $('#item_id').val(generateItemId());
+});
 
 // generate item Id
 function generateItemId(){
