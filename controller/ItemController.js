@@ -37,3 +37,29 @@ function loadItem(){
         $('#item_tbody').append(data);
     });
 }
+// save
+$('#item_save').on('click',function (){
+   let item_id = $('#item_id').val();
+    let item_name = $('#item_name').val();
+    let qty = $('#qty').val();
+    let price = $('#price').val();
+
+    if (item_id === '' || item_name === '' || qty === '' || price === ''){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Invalid Inputs",
+        });
+    }else {
+        Swal.fire({
+            title: " Item Saved !",
+            icon: "success",
+            draggable: true
+        });
+        let item_id = generateItemId();
+        let item_data = new ItemModel(item_id,item_name,qty,price);
+        item_db.push(item_data);
+
+        loadItem();
+    }
+});
