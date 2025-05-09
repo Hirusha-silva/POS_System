@@ -61,7 +61,7 @@ $('#item_save').on('click',function (){
         item_db.push(item_data);
 
         loadItem();
-        clearForm()
+        clearForm();
     }
 });
 
@@ -75,5 +75,25 @@ function clearForm() {
     $('#item_save').show();
     $('#item_update').hide();
     $('#item_delete').hide();
-
 }
+
+// table on click
+$('#item_tbody').on('click','tr',function (){
+    let idx = $(this).index();
+    let obj = item_db[idx];
+
+    let id = obj.item_Id;
+    let name = obj.item_name;
+    let qty = obj.qty;
+    let price = obj.price;
+
+    $('#item_id').val(id);
+    $('#item_name').val(name);
+    $('#qty').val(qty);
+    $('#price').val(price);
+
+    $('#item_save').hide();
+    $('#item_update').show();
+    $('#item_delete').show();
+
+});
