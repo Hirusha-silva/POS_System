@@ -134,7 +134,7 @@
             </div>
             <div class="mb-3">
                 <button type="button" id="customer_save" class="btn btn-success">Save</button>
-                <button type="reset"   class="btn btn-secondary">Reset</button>
+                <button type="button"   class="btn btn-secondary">Reset</button>
                 <button type="button" id="customer_update" class="btn btn-primary">Update</button>
                 <button type="button" id="customer_delete" class="btn btn-danger">Delete</button>
             </div>
@@ -155,47 +155,43 @@
     </div>
 
 <!--    item page-->
-    <div id="item">
-        <div class="d-flex align-items-center mb-4 " style="margin-top: 2rem;">
-            <i class="fa-solid fa-circle-user fa-2x"></i>
-            <h1 class="mb-0">Item</h1>
-        </div>
+    <div id="item" class="page">
+        <h2>Item Management</h2>
         <form>
-            <div class="itemname d-flex">
-                <div class="mb-3">
+            <div class="row mb-3">
+                <div class="col">
                     <label for="item_id" class="form-label">Item ID</label>
                     <input type="text" class="form-control" id="item_id" readonly>
                 </div>
-
-                <div class="mb-3">
+                <div class="col">
                     <label for="item_name" class="form-label">Item Name</label>
                     <input type="text" class="form-control" id="item_name">
                 </div>
             </div>
-            <div class="qp d-flex">
-                <div class="mb-3 ">
+            <div class="row mb-3">
+                <div class="col">
                     <label for="qty" class="form-label">Quantity on Hand</label>
-                    <input type="text" class="form-control" id="qty">
+                    <input type="number" class="form-control" id="qty">
                 </div>
-                <div class="mb-3 ">
-                    <label for="price" class="form-label">Price per unit</label>
-                    <input type="text" class="form-control" id="price">
+                <div class="col">
+                    <label for="price" class="form-label">Price per Unit</label>
+                    <input type="number" class="form-control" id="price">
                 </div>
             </div>
-            <div id="item_btn"class="d-flex justify-content-end gap-2 mt-3">
-                <button id="item_save" type="button" class="btn btn-success">Save</button>
-                <button id="item_reset" type="button" class="btn btn-secondary">Reset</button>
-                <button id="item_update" type="button" class="btn btn-danger">Delete</button>
-                <button id="item_delete" type="button" class="btn btn-primary">Update</button>
+            <div class="mb-3">
+                <button type="button" id="item_save" class="btn btn-success">Save</button>
+                <button type="button" id="item_reset" class="btn btn-secondary">Reset</button>
+                <button type="button" id="item_update" class="btn btn-primary">Update</button>
+                <button type="button" class="btn btn-danger">Delete</button>
             </div>
         </form>
-        <table class="table">
+        <table class="table table-striped">
             <thead>
             <tr>
-                <th scope="col">Item Code</th>
-                <th scope="col">Item Name</th>
-                <th scope="col">Qty on hand</th>
-                <th scope="col">price per unit</th>
+                <th>Item ID</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
             </tr>
             </thead>
             <tbody id="item_tbody">
