@@ -191,3 +191,6 @@ $("#customer_delete").on('click',function (){
       }
    })
 });
+
+// reset
+$('#customer_')
