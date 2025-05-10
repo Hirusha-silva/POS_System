@@ -133,3 +133,47 @@ $('#item_update').on('click',function (){
         });
     }
 });
+
+// delete
+$('#item_delete').on('click',function (){
+    let id = $('#item_id').val();
+
+    if (id === ''){
+        Swal.fire({
+            icon: "warning",
+            title: "No ID",
+            text: "Please select a item to delete.",
+        });
+        return;
+    }
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) =>{
+        if (result.isConfirmed){
+            const index = item_db.findIndex(i => i.item_Id === id);
+            if (index !== -1){
+                item_db.splice(index,1);
+                loadItem();
+                clearForm();
+
+                Swal.fire(
+                    "Deleted!",
+                    "Item has been deleted.",
+                    "success"
+                );
+            }else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Not Found",
+                    text: "Item with ID " + id + " does not exist.",
+                });
+            }
+        }
+    });
+});
