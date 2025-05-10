@@ -193,4 +193,6 @@ $("#customer_delete").on('click',function (){
 });
 
 // reset
-$('#customer_')
+$('#customer_reset').on('click',function (){
+   clearForm();
+});
