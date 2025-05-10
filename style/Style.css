@@ -31,5 +31,9 @@
 }
 
 #customer_card {
-    height: 605px;
+    height: 643px;
+}
+#order-id {
+    margin-bottom: 10px;
+    width: 300px;
 }

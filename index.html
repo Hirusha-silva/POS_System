@@ -206,6 +206,11 @@
                 <h1 class="mb-0">Order</h1>
             </div>
 
+            <div class="col-md-6" id="order-id">
+                <label for="orderCode" class="form-label">Order ID</label>
+                <input type="text" class="form-control" id="orderCode" readonly>
+            </div>
+
             <div class="row g-4">
                 <!-- Customer Form -->
                 <div class="col-md-6">
@@ -275,6 +280,7 @@
                                 <label class="form-label">QTY</label>
                                 <input type="text" class="form-control">
                             </div>
+                            <button id="addToOrder" type="button" class="btn btn-success w-100">Add to Order</button>
                         </div>
                     </form>
                 </div>
