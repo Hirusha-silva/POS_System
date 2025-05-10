@@ -104,6 +104,18 @@
 #item_detail{
     margin-top: 50px;
 }
-
+#search_customer {
+    width: 200px;
+}
+.form-select {
+    width: 100px;
+    margin-left: 10px;
+}
+.mb-3 {
+    margin-top: 10px;
+}
+#lbl_customer {
+    margin-top: 20px;
+}
 
 
