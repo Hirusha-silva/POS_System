@@ -26,7 +26,6 @@ $('#customer_search_btn').on('click',function (){
         });
         return
     }
-
     const c = customer_db.find(cu => cu.customerId === id);
     if (c){
         $('#loadCId').val(c.customerId);
@@ -40,4 +39,13 @@ $('#customer_search_btn').on('click',function (){
             text: "Id does not Exist",
         });
     }
+});
+
+// Reset Customer
+$('#customer_reset_btn').on('click',function (){
+    $('#search_customer').val('');
+    $('#loadCId').val('');
+    $('#loadCName').val('');
+    $('#loadCAddress').val('');
+    $('#loadCPhone').val('');
 });
