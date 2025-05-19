@@ -5,7 +5,7 @@ import OrderModel from "../model/OrderModel.js";
 $(document).ready(function (){
     $('#order_id').val(generateOrderId());
 });
-
+// Generate OrderId
 function generateOrderId(){
     if (order_db.length === 0){
         return 'O001';
@@ -15,3 +15,29 @@ function generateOrderId(){
     let newId = numberPart + 1;
     return "O" + newId.toString().padStart(3,'0');
 }
+// Search Customer
+$('#customer_search_btn').on('click',function (){
+    let id = $('#search_customer').val().trim();
+    if (!id){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Search an ID first",
+        });
+        return
+    }
+
+    const c = customer_db.find(cu => cu.customerId === id);
+    if (c){
+        $('#loadCId').val(c.customerId);
+        $('#loadCName').val(c.name);
+        $('#loadCAddress').val(c.address);
+        $('#loadCPhone').val(c.number);
+    }else {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Id does not Exist",
+        });
+    }
+});
