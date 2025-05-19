@@ -44,6 +44,7 @@
 <!--                        <li><a class="dropdown-item" href="#">About</a></li>-->
 <!--                    </ul>-->
 <!--                </li>-->
+                <div style="right: 0" class="position-absolute d-flex">
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="fa-solid fa-user-plus"></i>
@@ -54,7 +55,9 @@
                         <i class="fa-solid fa-right-from-bracket"></i>
                         Log Out</a>
                 </li>
+                </div>
             </ul>
+
         </div>
     </div>
 </nav>
@@ -218,10 +221,10 @@
                         <h5 class="mb-3">Search Customer</h5>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" id="search_customer" placeholder="Enter ID or Name">
-                            <select class="form-select" aria-label="Search by">
-                                <option value="code">ID</option>
-                                <option value="name">Name</option>
-                            </select>
+<!--                            <select class="form-select" aria-label="Search by">-->
+<!--                                <option value="code">ID</option>-->
+<!--                                <option value="name">Name</option>-->
+<!--                            </select>-->
                         </div>
                         <div class="mb-3 d-flex justify-content-between">
                             <button type="button" class="btn btn-primary btn-sm">Search</button>
@@ -230,19 +233,19 @@
                         <div id="customer_detail">
                             <div class="mb-3">
                                 <label class="form-label">Customer ID</label>
-                                <input type="text" class="form-control" readonly>
+                                <input type="text" id="loadCId" class="form-control" readonly>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Name</label>
-                                <input type="text" class="form-control">
+                                <input type="text" id="loadCName" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Address</label>
-                                <input type="text" class="form-control">
+                                <input type="text" id="loadCAddress" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Phone</label>
-                                <input type="text" class="form-control">
+                                <input type="text" id="loadCPhone" class="form-control">
                             </div>
                         </div>
                     </form>
@@ -311,6 +314,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="module" src="controller/CustomerController.js"></script>
 <script type="module" src="controller/ItemController.js"></script>
+<script type="module" src="controller/OrderController.js"></script>
 <script>
     $("#home").css("display","block");
     $("#item").css("display","none");
