@@ -49,3 +49,30 @@ $('#customer_reset_btn').on('click',function (){
     $('#loadCAddress').val('');
     $('#loadCPhone').val('');
 });
+
+// Search Item
+$('#item_search_btn').on('click',function (){
+    let id = $('#search_item').val().trim();
+    if (!id){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Search an ID first",
+        });
+        return;
+    }
+
+    const i = item_db.find(i => i.item_Id === id);
+    if (i){
+        $('#loadItemId').val(i.item_Id);
+        $('#loadIName').val(i.item_name);
+        $('#loadQHand').val(i.qty);
+        $('#loadIPrice').val(i.price);
+    }else {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Id does not Exist",
+        });
+    }
+});

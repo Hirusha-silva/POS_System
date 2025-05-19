@@ -256,32 +256,32 @@
                     <form id="item_card" class="card p-3">
                         <h5 class="mb-3">Search Item</h5>
                         <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Enter item name or ID">
+                            <input type="text" class="form-control" id="search_item" placeholder="Enter item name or ID">
                         </div>
                         <div class="mb-3 d-flex justify-content-between">
-                            <button type="button" class="btn btn-primary btn-sm">Search</button>
+                            <button type="button" id="item_search_btn" class="btn btn-primary btn-sm">Search</button>
                             <button type="button" class="btn btn-secondary btn-sm">Reset</button>
                         </div>
                         <div id="item_detail">
                             <div class="mb-3">
                                 <label class="form-label">Item ID</label>
-                                <input type="text" class="form-control" readonly>
+                                <input type="text" id="loadItemId" class="form-control" readonly>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Name</label>
-                                <input type="text" class="form-control">
+                                <input type="text" id="loadIName" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">QTY on Hand</label>
-                                <input type="text" class="form-control">
+                                <input type="text" id="loadQHand" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Price</label>
-                                <input type="text" class="form-control">
+                                <input type="text" id="loadIPrice" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">QTY</label>
-                                <input type="text" class="form-control">
+                                <input type="text" id="itemQTY" class="form-control">
                             </div>
                             <button id="addToOrder" type="button" class="btn btn-success w-100">Add to Order</button>
                         </div>
