@@ -1,8 +1,8 @@
 export default class OrderDetailModel {
-    constructor(orderId,customerId,item_id,paymentId,qty,total) {
+    constructor(orderId,customerId,itemId,paymentId,qty,total) {
         this.orderId = orderId;
         this.customerId = customerId;
-        this.item_id = item_id;
+        this.item_id = itemId;
         this.paymentId = paymentId;
         this.qty = qty;
         this.total = total;

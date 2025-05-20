@@ -1,11 +1,15 @@
-import {customer_db,item_db,order_db} from "../db/db.js";
+import {customer_db,item_db,order_db,payment_db,order_detail_db} from "../db/db.js";
 import OrderModel from "../model/OrderModel.js";
 import {loadItem} from "../controller/ItemController.js";
 import OrderDetailModel from "../model/OrderDetailModel.js";
+import PaymentModel from "../model/PaymentModel.js";
+import {loadOrderDetailTable} from "../controller/OrderDetailController.js";
 
 
 $(document).ready(function (){
     $('#order_id').val(generateOrderId());
+    $('#invoiceNo').val(generatePayID());
+    loadDate();
 });
 // Generate OrderId
 function generateOrderId(){
@@ -45,12 +49,16 @@ $('#customer_search_btn').on('click',function (){
 
 // Reset Customer
 $('#customer_reset_btn').on('click',function (){
+    resetCustomer();
+});
+
+function resetCustomer(){
     $('#search_customer').val('');
     $('#loadCId').val('');
     $('#loadCName').val('');
     $('#loadCAddress').val('');
     $('#loadCPhone').val('');
-});
+}
 
 // Search Item
 $('#item_search_btn').on('click',function (){
@@ -165,6 +173,13 @@ function setDisableCustomer() {
     $('#search_customer').prop('readonly', true);
 }
 
+// enable search and reset
+function setEnableCustomer() {
+    $('#customer_search_btn').prop('disabled', false);
+    $('#customer_reset_btn').prop('disabled', false);
+    $('#search_customer').prop('readonly', false);
+}
+
 // update total amount
 function updateTotalAmount() {
     let total = 0;
@@ -205,3 +220,102 @@ $('#cashAmount').on('input', function() {
     }
 });
 
+// Generate Pay Id
+function generatePayID() {
+    if (payment_db.length === 0) {
+        return "PAY001";
+    }
+    let lastId = payment_db[payment_db.length - 1].payId;
+    let numberPart = parseInt(lastId.substring(3));
+    let newId = numberPart + 1;
+    return "PAY" + newId.toString().padStart(3, '0');
+}
+
+// add payment
+$('#addPayment').on('click', function () {
+    let id = generatePayID();
+    $('#invoiceNo').val(id);
+    let date = $('#invoiceDate').val();
+    let method = $('#paymentMethod').val();
+    let totalAmount = parseFloat($('#loadTotal').text());
+
+    let orderCode = $('#order_id').val();
+    let customerID = $('#loadCId').val();
+    let paymentId = $('#invoiceNo').val();
+    let totAmount = $('#loadSubTotal').text();
+
+    if (id === '' || date === '' || method === '' || totalAmount <= 0 || isNaN(totalAmount)) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Please fill all payment details!",
+        });
+        return;
+    }
+
+    if (!customerID || customerID.trim() === '') {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Please select a customer and add items to the order!",
+        });
+        return;
+    }
+
+    if (order_db.length === 0) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Please add items to the order!",
+        });
+        return;
+    }
+
+
+    let payment_data = new PaymentModel(id, date, method, totalAmount);
+    payment_db.push(payment_data);
+
+
+    order_db.forEach(orderItem => {
+        let itemId = orderItem.item_Id;
+        let orderQty = orderItem.qty;
+
+        let orderDetail = new OrderDetailModel(orderCode, customerID, itemId, paymentId, orderQty, totAmount);
+        order_detail_db.push(orderDetail);
+    });
+
+    reset();
+    setEnableCustomer();
+    resetCustomer();
+    loadOrderDetailTable();
+
+    Swal.fire({
+        title: "Order Placed Successfully!",
+        icon: "success",
+        draggable: true
+    });
+});
+
+
+
+// load date
+function loadDate() {
+    const now = new Date();
+
+    const date = now.toISOString().split('T')[0];
+    $('#invoiceDate').val(date);
+
+}
+function reset() {
+    let id = generatePayID();
+    $('#invoiceNo').val(id);
+    $('#paymentMethod').val('Cash');
+    $('#cashAmount').val('');
+    $('#discountAmount').val('');
+    $('#balanceAmount').val('');
+    $('#loadTotal').text('');
+    $('#loadSubTotal').text('');
+    loadDate();
+    $('#order-tbody').empty();
+    order_db.length = 0;
+}

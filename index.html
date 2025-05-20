@@ -32,6 +32,9 @@
                 <li class="nav-item">
                     <a class="nav-link"  id="customer_nav" href="#">customer</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link"  id="order_detail_nav" href="#">OrderDetail</a>
+                </li>
 
 <!--                <li class="nav-item dropdown">-->
 <!--                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
@@ -221,10 +224,6 @@
                         <h5 class="mb-3">Search Customer</h5>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" id="search_customer" placeholder="Enter ID or Name">
-<!--                            <select class="form-select" aria-label="Search by">-->
-<!--                                <option value="code">ID</option>-->
-<!--                                <option value="name">Name</option>-->
-<!--                            </select>-->
                         </div>
                         <div class="mb-3 d-flex justify-content-between">
                             <button type="button" class="btn btn-primary btn-sm" id="customer_search_btn">Search</button>
@@ -374,7 +373,23 @@
             </div>
         </div>
     </div>
-
+<!--    order detail page-->
+    <div id="order_detail">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer ID</th>
+            <th>Item ID</th>
+            <th>Payment ID</th>
+            <th>Order Quantity</th>
+            <th>Final Amount</th>
+        </tr>
+        </thead>
+        <tbody id="orderDetailTableBody">
+        </tbody>
+    </table>
+    </div>
 </div>
 <script src="lib/jquery-3.7.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -383,17 +398,20 @@
 <script type="module" src="controller/CustomerController.js"></script>
 <script type="module" src="controller/ItemController.js"></script>
 <script type="module" src="controller/OrderController.js"></script>
+<script type="module" src="controller/OrderDetailController.js"></script>
 <script>
     $("#home").css("display","block");
     $("#item").css("display","none");
     $("#customer").css("display","none");
     $("#order").css("display","none");
+    $("#order_detail").css("display","none");
 
     $("#customer_nav").on('click',function (){
         $("#customer").css("display","block");
         $("#home").css("display","none");
         $("#item").css("display","none");
         $("#order").css("display","none");
+        $("#order_detail").css("display","none");
     });
 
     $("#item_nav").on('click',function (){
@@ -401,6 +419,7 @@
         $("#home").css("display","none");
         $("#customer").css("display","none");
         $("#order").css("display","none");
+        $("#order_detail").css("display","none");
     });
 
     $("#home_nav").on('click',function (){
@@ -408,6 +427,7 @@
         $("#customer").css("display","none");
         $("#item").css("display","none");
         $("#order").css("display","none");
+        $("#order_detail").css("display","none");
     });
 
     $("#order_nav").on('click',function (){
@@ -415,8 +435,16 @@
         $("#item").css("display","none");
         $("#customer").css("display","none");
         $("#home").css("display","none");
+        $("#order_detail").css("display","none");
     });
 
+    $('#order_detail_nav').on('click',function (){
+        $("#order_detail").css("display","block");
+        $("#order").css("display","none");
+        $("#item").css("display","none");
+        $("#customer").css("display","none");
+        $("#home").css("display","none");
+    });
 </script>
 </body>
 </html>
