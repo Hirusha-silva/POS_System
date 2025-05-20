@@ -1,5 +1,7 @@
 import {customer_db,item_db,order_db} from "../db/db.js";
 import OrderModel from "../model/OrderModel.js";
+import {loadItem} from "../controller/ItemController.js";
+import OrderDetailModel from "../model/OrderDetailModel.js";
 
 
 $(document).ready(function (){
@@ -79,10 +81,78 @@ $('#item_search_btn').on('click',function (){
 
 // Reset Item
 $('#item_reset_btn').on('click',function (){
+    itemReset();
+});
+
+function itemReset(){
     $('#search_item').val('');
     $('#loadItemId').val('');
     $('#loadIName').val('');
     $('#loadQHand').val('');
     $('#loadIPrice').val('');
     $('#itemQTY').val('');
+}
+
+// Add to order
+$('#addToOrder').on('click',function (){
+    let itemCode = $('#loadItemId').val();
+    let itemName = $('#loadIName').val();
+    let price = parseFloat($('#loadIPrice').val());
+    let needQty = parseInt($('#itemQTY').val());
+    let item = item_db.find(item => item.item_Id === itemCode);
+
+    if (!item) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "No Item Found",
+        });
+        return;
+    }
+    if (item.qty < needQty) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Not enough Quantity",
+        });
+        return;
+    }
+    let index = order_db.findIndex(item => item.item_Id === itemCode);
+    if (index !== -1) {
+        // Update existing item quantity and total
+        order_db[index].qty += needQty;
+        order_db[index].total = order_db[index].qty * order_db[index].price;
+    } else {
+        // Add new item to order details
+        let total = price * needQty;
+        let order_data = new OrderModel(itemCode, itemName, needQty, price, total);
+        order_db.push(order_data);
+    }
+    item.qty -= needQty;
+    console.log(order_db)
+    loadItem();
+    itemReset();
+    loadOrderTable();
+
 });
+
+// load Order table
+function loadOrderTable(){
+    $('#order_tbody').empty();
+    order_db.map((orderDetail) => {
+        let itemCode = orderDetail.item_Id;
+        let itemName = orderDetail.item_name;
+        let qty = orderDetail.qty;
+        let price = orderDetail.price;
+        let total = orderDetail.total;
+
+        let data = `<tr>
+                       <td>${itemCode}</td>
+                       <td>${itemName}</td>
+                       <td>${qty}</td>
+                       <td>${price}</td>
+                       <td>${total}</td>
+                   </tr>`;
+        $('#order_tbody').append(data);
+    });
+}

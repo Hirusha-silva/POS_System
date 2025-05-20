@@ -19,7 +19,7 @@ function generateItemId(){
 }
 
 // load table data
-function loadItem(){
+ export function loadItem(){
     $('#item_tbody').empty();
     item_db.map((item,index) => {
        let item_id = item.item_Id;
