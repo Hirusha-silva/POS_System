@@ -174,3 +174,21 @@ function updateTotalAmount() {
     $('#loadTotal').text(total.toFixed(2));
     $('#loadSubTotal').text(total.toFixed(2));
 }
+// discount
+$('#discountAmount').on('input', function() {
+    let total = parseFloat($('#loadTotal').text());
+    let discount = parseFloat($('#discountAmount').val());
+
+    if (isNaN(discount)) {
+        discount = 0;
+    }
+    let subTotal = total - discount;
+    $('#loadSubTotal').text(subTotal.toFixed(2));
+
+    let cash = parseFloat($('#cashAmount').val());
+    if (!isNaN(cash)) {
+        let balance = cash - subTotal;
+        $('#balanceAmount').val(balance.toFixed(2));
+    }
+});
+
