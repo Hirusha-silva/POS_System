@@ -192,3 +192,16 @@ $('#discountAmount').on('input', function() {
     }
 });
 
+// balance
+$('#cashAmount').on('input', function() {
+    let cash = parseFloat($('#cashAmount').val());
+    let subTotal = parseFloat($('#loadSubTotal').text());
+
+    if (isNaN(cash) || isNaN(subTotal)) {
+        $('#balanceAmount').val("Invalid input");
+    } else {
+        let balance = cash - subTotal;
+        $('#balanceAmount').val(balance.toFixed(2));
+    }
+});
+
