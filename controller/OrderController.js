@@ -76,3 +76,13 @@ $('#item_search_btn').on('click',function (){
         });
     }
 });
+
+// Reset Item
+$('#item_reset_btn').on('click',function (){
+    $('#search_item').val('');
+    $('#loadItemId').val('');
+    $('#loadIName').val('');
+    $('#loadQHand').val('');
+    $('#loadIPrice').val('');
+    $('#itemQTY').val('');
+});
