@@ -119,18 +119,19 @@ $('#addToOrder').on('click',function (){
     }
     let index = order_db.findIndex(item => item.item_Id === itemCode);
     if (index !== -1) {
-        // Update existing item quantity and total
+
         order_db[index].qty += needQty;
         order_db[index].total = order_db[index].qty * order_db[index].price;
     } else {
-        // Add new item to order details
+
         let total = price * needQty;
         let order_data = new OrderModel(itemCode, itemName, needQty, price, total);
         order_db.push(order_data);
     }
     item.qty -= needQty;
-    console.log(order_db)
+
     loadItem();
+    setDisableCustomer();
     itemReset();
     loadOrderTable();
 
@@ -156,3 +157,10 @@ function loadOrderTable(){
         $('#order_tbody').append(data);
     });
 }
+// disable search and rest
+function setDisableCustomer() {
+    $('#customer_search_btn').prop('disabled', true);
+    $('#customer_reset_btn').prop('disabled', true);
+    $('#search_customer').prop('readonly', true);
+}
+
