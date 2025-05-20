@@ -134,6 +134,7 @@ $('#addToOrder').on('click',function (){
     setDisableCustomer();
     itemReset();
     loadOrderTable();
+    updateTotalAmount();
 
 });
 
@@ -164,3 +165,12 @@ function setDisableCustomer() {
     $('#search_customer').prop('readonly', true);
 }
 
+// update total amount
+function updateTotalAmount() {
+    let total = 0;
+    order_db.forEach(entry => {
+        total += entry.total;
+    });
+    $('#loadTotal').text(total.toFixed(2));
+    $('#loadSubTotal').text(total.toFixed(2));
+}
