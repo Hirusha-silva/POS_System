@@ -115,6 +115,7 @@ $('#item_tbody').on('click','tr',function (){
     $('#item_update').show();
     $('#item_delete').show();
 });
+
 // update
 $('#item_update').on('click',function (){
     let item_id = $('#item_id').val();
@@ -122,14 +123,10 @@ $('#item_update').on('click',function (){
     let qty = $('#qty').val();
     let price = $('#price').val();
 
-    if (item_id === '' || item_name === '' || qty === '' || price === ''){
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "select data to update !",
-        });
+    if (!validateItemInputs(item_name,qty,price)){
         return;
     }
+
     const index = item_db.findIndex((i => i.item_Id === item_id));
     if (index !== -1){
         item_db[index].item_name = item_name;
