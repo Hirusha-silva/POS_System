@@ -64,8 +64,8 @@
         <div class="text-center banner-content">
             <h1 class="display-4 fw-bold">Welcome to ABC POS System</h1>
             <p class="lead">Fast. Reliable. Efficient Point-of-Sale Management.</p>
-            <a href="#" class="btn btn-primary btn-lg mt-3">
-                <i class="fa-solid fa-cart-shopping me-2"></i> Get Started
+            <a href="#" class="btn btn-primary btn-lg mt-3" id="start">
+                <i class="fa-solid fa-cart-shopping me-2" ></i> Get Started
             </a>
         </div>
         </div>
@@ -194,9 +194,8 @@
     </div>
 <!--order page-->
     <div id="order" class="page">
-        <div class="container mt-5">
+        <div class="container ">
             <div class="d-flex align-items-center mb-4">
-<!--                <i class="fa-solid fa-circle-user fa-2x me-2"></i>-->
                 <i class="fas fa-receipt fa-2x me-2"></i>
                 <h1 class="mb-0">Order</h1>
             </div>
@@ -395,7 +394,7 @@
     $("#order").css("display","none");
     $("#order_detail").css("display","none");
 
-    $("#customer_nav,#customerCard").on('click',function (){
+    $("#customer_nav,#customerCard,#start").on('click',function (){
         $("#customer").css("display","block");
         $("#home").css("display","none");
         $("#item").css("display","none");
