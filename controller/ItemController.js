@@ -44,27 +44,45 @@ $('#item_save').on('click',function (){
     let qty = $('#qty').val();
     let price = $('#price').val();
 
-    if (item_id === '' || item_name === '' || qty === '' || price === ''){
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Invalid Inputs",
-        });
-    }else {
-        Swal.fire({
-            title: " Item Saved !",
-            icon: "success",
-            draggable: true
-        });
-        let item_id = generateItemId();
+    if (!validateItemInputs(item_name,qty,price)){
+        return;
+    }
+
         let item_data = new ItemModel(item_id,item_name,qty,price);
         item_db.push(item_data);
 
         loadItem();
         clearForm();
-    }
+
+    Swal.fire({
+        title: "Added Successfully!",
+        icon: "success",
+        draggable: true
+    });
+
 });
 
+// validate
+function validateItemInputs(item_name, price, qty) {
+    const nameRegex = /^[A-Za-z0-9\s\-]{3,}$/;
+    const priceRegex = parseFloat(price);
+    const quantity = parseInt(qty);
+
+    if (!nameRegex.test(item_name)) {
+        Swal.fire('Invalid Name', 'Item name must be at least 3 characters', 'error');
+        return false;
+    }
+    if (isNaN(priceRegex) || price <= 0) {
+        Swal.fire('Invalid Price', 'Price must be a positive number.', 'error');
+        return false;
+    }
+    if (isNaN(quantity) || quantity < 0) {
+        Swal.fire('Invalid Quantity', 'Quantity must be a non-negative number.', 'error');
+        return false;
+    }
+
+    return true;
+}
 
 // clear form
 function clearForm() {
