@@ -65,6 +65,7 @@ $('#item_save').on('click',function (){
     }
 });
 
+
 // clear form
 function clearForm() {
     $('#item_id').val(generateItemId());

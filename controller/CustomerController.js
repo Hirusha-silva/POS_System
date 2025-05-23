@@ -47,27 +47,20 @@ $('#customer_save').on('click',function (){
    let email = $('#email').val();
    let number = $('#number').val();
 
-   if (customerId === '' || name === '' || address === '' || email === '' || number === ''){
-      Swal.fire({
-         icon: "error",
-         title: "Oops...",
-         text: "Invalid Inputs",
-      });
-   }else {
-
-      Swal.fire({
-         title: " Customer Saved !",
-         icon: "success",
-         draggable: true
-      });
-
-      let customerId =generateCustomerId();
+   if (!validateCustomerInputs(name,address,email,number)){
+      return;
+   }
       let customer_data = new CustomerModel(customerId,name,address,email,number);
       customer_db.push(customer_data);
 
       loadCustomer();
       clearForm();
-   }
+
+   Swal.fire({
+      title: "Added Successfully!",
+      icon: "success",
+      draggable: true
+   });
 });
 
 // clear form
@@ -113,14 +106,10 @@ $('#customer_update').on('click',function (){
    let email = $('#email').val();
    let number = $('#number').val();
 
-   if (id === '' || name === '' || address === '' || email === '' || number === ''){
-      Swal.fire({
-         icon: "error",
-         title: "Oops...",
-         text: "select data to update !",
-      });
+   if (!validateCustomerInputs(name,address,email,number)){
       return;
    }
+
    const index = customer_db.findIndex(c => c.customerId === id);
 
    if (index !== -1){
@@ -196,3 +185,30 @@ $("#customer_delete").on('click',function (){
 $('#customer_reset').on('click',function (){
    clearForm();
 });
+
+// validate
+function validateCustomerInputs(name, address, email, number) {
+   const nameRegex = /^[A-Za-z\s]{3,}$/;
+   const addressRegex = /^.{5,}$/;
+   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+   const phoneRegex = /^(?:\+94|0)?7\d{8}$/;
+
+   if (!nameRegex.test(name)) {
+      Swal.fire('Invalid Name', 'Please enter a valid full name (at least 3 characters,only use letters)', 'error');
+      return false;
+   }
+   if (!addressRegex.test(address)) {
+      Swal.fire('Invalid Address', 'Address must be at least 5 characters long.', 'error');
+      return false;
+   }
+   if (!emailRegex.test(email)) {
+      Swal.fire('Invalid Email', 'Please enter a valid email address.', 'error');
+      return false;
+   }
+   if (!phoneRegex.test(number)) {
+      Swal.fire('Invalid Contact', 'Please enter a valid Sri Lankan phone number.', 'error');
+      return false;
+   }
+
+   return true;
+}

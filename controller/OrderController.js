@@ -344,6 +344,8 @@ function reset() {
     $('#loadTotal').text('');
     $('#loadSubTotal').text('');
     loadDate();
-    $('#order-tbody').empty();
+    $('#order_tbody').empty();
     order_db.length = 0;
 }
+
+
