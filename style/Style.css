@@ -1,5 +1,13 @@
 .navbar-nav .nav-item {
     margin-right: 20px;
+
+}
+.nav-item a {
+    color: white;
+}
+
+#navb{
+    background-color: dimgrey;
 }
 .banner {
     background: linear-gradient(135deg, darkblue, #4b6cb7, #182848,darkblue);
@@ -7,11 +15,11 @@
     padding: 100px 20px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
 }
 
 #card-section {
-    margin-top: 40px;
-    padding-left: 20px; /* shifts all cards slightly to the right */
+    margin-top: 10px;
 }
 
 .card {
@@ -41,3 +49,24 @@
     margin-bottom: 10px;
     width: 300px;
 }
+
+body{
+    background-color: bisque;
+}
+
+#order_detail{
+    margin-top: 40px;
+}
+
+#orderT{
+    margin-top: 10px;
+}
+
+#item{
+    margin-top: 100px;
+}
+
+#customer{
+    margin-top: 50px;
+}
+

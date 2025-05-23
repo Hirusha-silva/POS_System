@@ -12,16 +12,16 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">ABC POS System</a>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" >
+    <div class="container-fluid" id="navb">
+        <a class="navbar-brand" href="#" style="color: white" >ABC POS System</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active"  id="home_nav" aria-current="page" href="#">Home</a>
+                    <a class="nav-link "  id="home_nav" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="order_nav" href="#">Orders</a>
@@ -73,33 +73,30 @@
 <!--  card section-->
         <div id="card-section" class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
             <div class="col">
-                <div class="card text-center">
+                <div class="card text-center" id="customerCard">
                     <h1>Customer</h1>
                     <img src="img/486-4865840_customer-icon-png-team-icon-font-awesome-transparent.png" class="card-img-top" alt="Customer">
                 </div>
             </div>
             <div class="col">
-                <div class="card text-center">
+                <div class="card text-center" id="itemCard">
                     <h1>Item</h1>
                     <img src="img/1710414.png" class="card-img-top" alt="Item">
                 </div>
             </div>
             <div class="col">
-                <div class="card text-center">
+                <div class="card text-center" id="orderCard">
                     <h1>Order</h1>
                     <img src="img/360_F_815624235_IJZ1XhUQWcvXUyYUYQEhrlI8LtEwpAYG.jpg" class="card-img-top" alt="Order">
                 </div>
             </div>
             <div class="col">
-                <div class="card text-center">
+                <div class="card text-center" id="orderdetailCard">
                     <h1>Order Detail</h1>
                     <img src="img/hd-settings-black-line-icon-png-701751694973543ev5sfvai0q.png" class="card-img-top" alt="Settings">
                 </div>
             </div>
         </div>
-
-
-
     </div>
 <!--customer page-->
     <div id="customer" class="page">
@@ -281,7 +278,7 @@
             </div>
 
             <!-- Order Table -->
-            <table class="table table-striped">
+            <table class="table table-striped" id="orderT">
                 <thead>
                 <tr>
                     <th>Item Code</th>
@@ -398,7 +395,7 @@
     $("#order").css("display","none");
     $("#order_detail").css("display","none");
 
-    $("#customer_nav").on('click',function (){
+    $("#customer_nav,#customerCard").on('click',function (){
         $("#customer").css("display","block");
         $("#home").css("display","none");
         $("#item").css("display","none");
@@ -406,7 +403,7 @@
         $("#order_detail").css("display","none");
     });
 
-    $("#item_nav").on('click',function (){
+    $("#item_nav,#itemCard").on('click',function (){
         $("#item").css("display","block");
         $("#home").css("display","none");
         $("#customer").css("display","none");
@@ -422,7 +419,7 @@
         $("#order_detail").css("display","none");
     });
 
-    $("#order_nav").on('click',function (){
+    $("#order_nav,#orderCard").on('click',function (){
         $("#order").css("display","block");
         $("#item").css("display","none");
         $("#customer").css("display","none");
@@ -430,7 +427,7 @@
         $("#order_detail").css("display","none");
     });
 
-    $('#order_detail_nav').on('click',function (){
+    $('#order_detail_nav,#orderdetailCard').on('click',function (){
         $("#order_detail").css("display","block");
         $("#order").css("display","none");
         $("#item").css("display","none");
