@@ -13,14 +13,15 @@ $(document).ready(function (){
 });
 // Generate OrderId
 function generateOrderId(){
-    if (order_db.length === 0){
+    if (order_detail_db.length === 0){
         return 'O001';
     }
-    let lastId = order_db[order_db.length -1].order_id;
-    let numberPart = parseInt(lastId.substring(1));
+    let lastId = order_detail_db[order_detail_db.length -1].orderId;
+    let numberPart = parseInt(lastId.substring(2));
     let newId = numberPart + 1;
     return "O" + newId.toString().padStart(3,'0');
 }
+
 // Search Customer
 $('#customer_search_btn').on('click',function (){
     let id = $('#search_customer').val().trim();
@@ -244,6 +245,9 @@ $('#addPayment').on('click', function () {
     let paymentId = $('#invoiceNo').val();
     let totAmount = $('#loadSubTotal').text();
 
+    let discount = parseFloat($('#discountAmount').val());
+    let cash = parseFloat($('#cashAmount').val());
+
     if (id === '' || date === '' || method === '' || totalAmount <= 0 || isNaN(totalAmount)) {
         Swal.fire({
             icon: "error",
@@ -267,6 +271,24 @@ $('#addPayment').on('click', function () {
             icon: "error",
             title: "Oops...",
             text: "Please add items to the order!",
+        });
+        return;
+    }
+
+    if (isNaN(discount) || discount < 0 || discount > totalAmount) {
+        Swal.fire({
+            icon: "error",
+            title: "Invalid Discount",
+            text: "Discount must be between 0 and total amount!",
+        });
+        return;
+    }
+
+    if (isNaN(cash) || cash < totAmount) {
+        Swal.fire({
+            icon: "error",
+            title: "Invalid Cash Amount",
+            text: "Cash must be greater than or equal to the subtotal!",
         });
         return;
     }
@@ -306,9 +328,15 @@ function loadDate() {
     $('#invoiceDate').val(date);
 
 }
+
+$('#resetPaymentDetails').on('click', function() {
+    reset();
+});
+
 function reset() {
     let id = generatePayID();
     $('#invoiceNo').val(id);
+    $('#order_id').val(generateOrderId());
     $('#paymentMethod').val('Cash');
     $('#cashAmount').val('');
     $('#discountAmount').val('');
