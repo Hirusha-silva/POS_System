@@ -118,6 +118,11 @@ $('#addToOrder').on('click',function (){
         });
         return;
     }
+
+    if (!validateOrderQuantity(needQty)){
+        return;
+    }
+
     if (item.qty < needQty) {
         Swal.fire({
             icon: "error",
@@ -346,6 +351,17 @@ function reset() {
     loadDate();
     $('#order_tbody').empty();
     order_db.length = 0;
+    setEnableCustomer();
 }
 
+function validateOrderQuantity(qty) {
+    const quantity = parseInt(qty);
+
+    if (isNaN(quantity) || quantity < 0) {
+        Swal.fire('Invalid Quantity', 'Quantity must be a non-negative number.', 'error');
+        return false;
+    }
+
+    return true;
+}
 
