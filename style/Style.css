@@ -8,26 +8,30 @@
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
+
 #card-section {
-    margin-top: 5px;
+    margin-top: 40px;
+    padding-left: 20px; /* shifts all cards slightly to the right */
 }
-.cards {
-    height: 100%;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
 }
 
-.cards img {
-    max-height: 200px;
-    object-fit: contain;
-}
-
-.cards :hover{
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0, 0, 139, 0.4);
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0, 0, 139, 0.3);
     cursor: pointer;
+}
+
+.card-img-top {
+    height: 180px;
+    object-fit: contain;
+    padding: 15px;
 }
 
 #customer_card {
